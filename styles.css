@@ -17,7 +17,6 @@ body {
   border: 5px solid #ccc;
   background-color: #FFFFFF;
   width: 100%;
-  height: 100%;
 }
 
 .popup {
@@ -36,7 +35,7 @@ body {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  max-width: 80%;
+  width: 100%; /* Adjusted to 100% width */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center; /* Center the text */
 }
@@ -45,14 +44,10 @@ body {
   color: #ff5733; /* Your desired color for the heading */
 }
 
-close-btn {
-  float: right;
-  cursor: pointer;
-   color: #ff5733;
-}
 .close-btn {
   position: absolute;
-  top: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   right: 10px;
   width: 30px;
   height: 30px;
