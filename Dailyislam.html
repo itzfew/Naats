@@ -4,122 +4,178 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hadith & Ayah of the Day</title>
+
+
+
+
 <style>
     body {
-        font-family: Arial, sans-serif;
-        background-color: #0F4C81; /* Dark blue background */
-        color: white; /* White text */
-        margin: 0;
-        padding: 0;
-        text-align: center; /* Center text */
-    }
-    h1 {
-        background-color: rgba(0, 0, 255, 0.2); /* Blue dim background */
-        display: inline-block;
-        padding: 10px;
-        border-radius: 8px;
-    }
-    .section {
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff; /* White background */
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        text-align: centre; /* centre-align text */
-    }
-    .hadith {
-        font-style: italic;
-        color: #333; /* Black text */
-        font-weight: bold; /* Bold text */
-    }
-    .hadith-reference, .ayah-reference {
-        font-size: 0.8rem;
-        color: #666; /* Dark gray text */
-    }
-    .ayah {
-        color: #333; /* Black text */
-    }
-    .arabic-text {
-        font-family: "Amiri", serif; /* Use a font that supports Arabic script */
-        direction: rtl; /* Right-to-left text direction */
-        unicode-bidi: bidi-override;
-        color: #1E8449; /* Dark green text */
-    }
+    font-family: Arial, sans-serif;
+    background-color: #0F4C81; /* Dark blue background */
+    color: white; /* White text */
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center text */
+}
+
+h2 {
+    background-color: rgba(0, 0, 255, 0.2); /* Blue dim background */
+    display: inline-block;
+    padding: 10px;
+    border-radius: 8px;
+   text-align: center; /* Center text */
+
+
+}
+
+.container {
+    width: 90%;
+   
+    margin: 20px auto;
+   text-align: center;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #F4F4F4; /* Light gray background */
+    text-align: center;
+}
+
+.content {
+    flex: 1;
+    text-align: center;
+}
+
+.hadith, .ayah {
+    font-style: italic;
+    font-weight: bold; /* Bold text */
+    color: #333; /* Black text */
+}
+
+.hadith-reference, .ayah-reference {
+    font-size: 0.8rem;
+    color: #666; /* Dark gray text */
+}
+
+.arabic-text {
+    font-family: "Amiri", serif; /* Use a font that supports Arabic script */
+    direction: rtl; /* Right-to-left text direction */
+    unicode-bidi: bidi-override;
+    color: #1E8449; /* Dark green text */
+}
+
+.button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    font-size: 0; /* Hide text */
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 3D effect */
+}
+
+.button:hover {
+    background-color: #45a049; /* Darker green background */
+}
 </style>
 </head>
 <body>
-<div class="section">
-<h1>Hadith Of The Day</h1>
-    <p class="hadith" id="hadith"></p>
-    <p class="hadith-reference" id="hadith-source"></p>
-</div>
 
-<div style="margin-top: 20px;"></div> <!-- Gap between sections -->
-<div class="section">
-<h1>Ayah Of The Day</h1>
-    <p class="ayah" id="ayah">
-        <span class="arabic-text"></span>
-<br></br>
-<span class="english-text"></span>
-    </p>
-    <p class="ayah-reference" id="ayah-source"></p>
+<div class="container">
+    <div class="section">
+        <div class="content">
+            <h2>Hadith Of The Day</h2>
+           <br></br>
+         
+           
+            <p class="hadith" id="hadith"></p>
+            <p class="hadith-reference" id="hadith-source"></p>
+        </div>
+        <button class="button" id="hadith-button" onclick="generateRandomHadith()"></button>
+    </div>
 </div>
-
+<div class="container">
+    <div class="section">
+        <div class="content">
+            <h2>Ayah Of The Day</h2>
+           <br></br>
+            <p class="ayah" id="ayah">
+               <span class="arabic-text"></span>
+               <br></br>
+                <span class="english-text"></span>
+                
+            </p>
+            <p class="ayah-reference" id="ayah-source"></p>
+        </div>
+        <button class="button" id="ayah-button" onclick="generateRandomAyah()"></button>
+    </div>
+</div>
 <script>
     const hadiths = [
-        {
-            text: "Actions are but by intentions, and every man shall have only that which he intended.",
-            source: "Sahih al-Bukhari"
-        },
-        {
-            text: "Whoever does not show mercy will not be shown mercy.",
-            source: "Sahih al-Bukhari"
-        },
-        {
-            text: "The strong person is not the one who can wrestle someone else down. The strong person is the one who can control himself when he is angry.",
-            source: "Sahih al-Bukhari"
-        },
-        // Add more hadiths as needed
-    ];
+    {
+        text: "Actions are but by intentions, and every man shall have only that which he intended.",
+        source: "Sahih al-Bukhari"
+    },
+    {
+        text: "Whoever does not show mercy will not be shown mercy.",
+        source: "Sahih al-Bukhari"
+    },
+    {
+        text: "The strong person is not the one who can wrestle someone else down. The strong person is the one who can control himself when he is angry.",
+        source: "Sahih al-Bukhari"
+    },
+    // Add more hadiths as needed
+];
 
-    const ayahs = [
-        {
-            text_en: "Indeed, with hardship comes ease.",
-            text_ar: "إِنَّ مَعَ الْعُسْرِ يُسْرًا",
-            source: "Quran 94:6"
-        },
-        {
-            text_en: "And whoever fears Allah - He will make for him a way out.",
-            text_ar: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا",
-            source: "Quran 65:2"
-        },
-        {
-            text_en: "And seek help through patience and prayer, and indeed, it is difficult except for the humbly submissive [to Allah].",
-            text_ar: "وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ وَإِنَّهَا لَكَبِيرَةٌ إِلَّا عَلَى الْخَاشِعِينَ",
-            source: "Quran 2:45"
-        },
-        // Add more ayahs as needed
-    ];
+const ayahs = [
+    {
+        text_en: "Indeed, with hardship comes ease.",
+        text_ar: "إِنَّ مَعَ الْعُسْرِ يُسْرًا",
+        source: "Quran 94:6"
+    },
+    {
+        text_en: "And whoever fears Allah - He will make for him a way out.",
+        text_ar: "وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا",
+        source: "Quran 65:2"
+    },
+    {
+        text_en: "And seek help through patience and prayer, and indeed, it is difficult except for the humbly submissive [to Allah].",
+        text_ar: "وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ وَإِنَّهَا لَكَبِيرَةٌ إِلَّا عَلَى الْخَاشِعِينَ",
+        source: "Quran 2:45"
+    },
+    // Add more ayahs as needed
+];
 
-    function generateRandomHadith() {
-        const randomIndex = Math.floor(Math.random() * hadiths.length);
-        const randomHadith = hadiths[randomIndex];
-        document.getElementById("hadith").textContent = randomHadith.text;
-        document.getElementById("hadith-source").textContent = "- " + randomHadith.source;
-    }
+function generateRandomHadith() {
+    const randomIndex = Math.floor(Math.random() * hadiths.length);
+    const randomHadith = hadiths[randomIndex];
+    document.getElementById("hadith").textContent = randomHadith.text;
+    document.getElementById("hadith-source").textContent = "- " + randomHadith.source;
+}
 
-    function generateRandomAyah() {
-        const randomIndex = Math.floor(Math.random() * ayahs.length);
-        const randomAyah = ayahs[randomIndex];
-        document.querySelector(".english-text").textContent = randomAyah.text_en;
-        document.querySelector(".arabic-text").textContent = randomAyah.text_ar;
-        document.getElementById("ayah-source").textContent = "- " + randomAyah.source;
-    }
-    
-    // Generate random hadith and ayah on page load
-    generateRandomHadith();
-    generateRandomAyah();
+function generateRandomAyah() {
+    const randomIndex = Math.floor(Math.random() * ayahs.length);
+    const randomAyah = ayahs[randomIndex];
+    document.querySelector(".english-text").textContent = randomAyah.text_en;
+    document.querySelector(".arabic-text").textContent = randomAyah.text_ar;
+    document.getElementById("ayah-source").textContent = "- " + randomAyah.source;
+}
+
+// Generate random hadith and ayah on page load
+generateRandomHadith();
+generateRandomAyah();
+
+// Event listener for button click to generate random hadith
+document.getElementById("hadith-button").addEventListener("click", generateRandomHadith);
+
+// Event listener for button click to generate random ayah
+document.getElementById("ayah-button").addEventListener("click", generateRandomAyah);
 </script>
 </body>
 </html>
