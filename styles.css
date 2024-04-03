@@ -9,6 +9,8 @@ body {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
   padding: 15px; /* Padding for the content */
+  max-width: 600px; /* Adjust the maximum width as needed */
+  margin: 0 auto; /* Center the list horizontally */
 }
 
 .naat-item {
@@ -38,6 +40,8 @@ body {
   border-radius: 5px;
   width: 100%; /* Adjusted to 100% width */
   max-width: 600px; /* Adjust the maximum width as needed */
+  max-height: 80%; /* Maximum height for scroll */
+  overflow-y: auto; /* Enable vertical scroll */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center; /* Center the text */
 }
