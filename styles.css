@@ -7,8 +7,8 @@ body {
 
 .naat-list {
   text-align: center;
-  max-width: 600px; /* Adjust the maximum width as needed */
-  margin: 0 auto; /* Center the list horizontally */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  padding: 15px; /* Padding for the content */
 }
 
 .naat-item {
